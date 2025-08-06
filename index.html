@@ -349,11 +349,11 @@
         </div>
         
         <div class="tabs">
-            <div class="tab active" onclick="showTab('schedule')">📅 Cronograma Semanal</div>
-            <div class="tab" onclick="showTab('editor')">✏️ Editor Personalizado</div>
-            <div class="tab" onclick="showTab('meetings')">🤝 Reuniões</div>
-            <div class="tab" onclick="showTab('excel')">📊 Modelo Excel</div>
-            <div class="tab" onclick="showTab('tips')">💡 Dicas de Produtividade</div>
+            <div class="tab active" onclick="showTab(event, 'schedule')">📅 Cronograma Semanal</div>
+            <div class="tab" onclick="showTab(event, 'editor')">✏️ Editor Personalizado</div>
+            <div class="tab" onclick="showTab(event, 'meetings')">🤝 Reuniões</div>
+            <div class="tab" onclick="showTab(event, 'excel')">📊 Modelo Excel</div>
+            <div class="tab" onclick="showTab(event, 'tips')">💡 Dicas de Produtividade</div>
         </div>
         
         <div id="schedule" class="tab-content active">
@@ -732,7 +732,7 @@
     <script>
         let customTaskCounter = 0;
         
-        function showTab(tabName) {
+        function showTab(event, tabName) {
             // Hide all tab contents
             const tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(content => {
@@ -752,9 +752,8 @@
             }
             
             // Add active class to clicked tab
-            const clickedTab = event.target;
-            if (clickedTab) {
-                clickedTab.classList.add('active');
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
             }
         }
         
